@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package org.mocchi.product.v1beta1;
+
+message Product {
+    int64 id = 1;
+    int64 brand_id = 2;
+    int64 shopify_id = 3;
+    string title = 4;
+    string body_html = 5;
+    string vendor = 6;
+    string product_type = 7;
+    string created_at = 8;
+    string handle = 9;
+    string updated_at = 10;
+    string published_at = 11;
+    string template_suffix = 12;
+    string published_scope = 13;
+    string tags = 14;
+    string variants = 15;
+    string image_src = 16;
+}
