@@ -82,7 +82,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = URI("https://maven.pkg.github.com/octocat/hello-world")
+            url = URI("https://maven.pkg.github.com/mocchi-app/mocchi-definitions")
             credentials {
                 username = System.getenv("USERNAME")
                 password = System.getenv("TOKEN")
