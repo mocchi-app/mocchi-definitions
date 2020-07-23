@@ -1,0 +1,22 @@
+# https://github.com/protocolbuffers/protobuf/releases
+protoc:
+  version: 3.11.4
+
+excludes:
+  # a file inside is copied from
+  # https://github.com/envoyproxy/protoc-gen-validate/tree/master/validate
+  # to avoid the dependency in argon
+  # the file doesn't match argon v2 lint rules so it's excluded
+  - validate/
+
+lint:
+  group: uber2
+  rules:
+    add:
+      # Streaming RPCs are disabled.
+      # If streaming is really required - delete RPCS_NO_STREAMING rule
+      # after familiarization with the following information:
+      # yamllint disable-line rule:line-length
+      # - https://github.com/uber/prototool/blob/dev/style/README.md#streaming-rpcs
+      # - https://github.com/twitchtv/twirp/issues/70#issuecomment-470367807
+      - RPCS_NO_STREAMING
