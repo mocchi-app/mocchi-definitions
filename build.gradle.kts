@@ -1,6 +1,7 @@
 import com.google.protobuf.gradle.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.ajoberstar.grgit.Grgit
+import java.net.URI
 
 plugins {
     idea
@@ -76,6 +77,16 @@ publishing {
             from(components["java"])
             artifact(protoJar.get())
             suppressAllPomMetadataWarnings()
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = URI("https://maven.pkg.github.com/octocat/hello-world")
+            credentials {
+                username = System.getenv("USERNAME")
+                password = System.getenv("TOKEN")
+            }
         }
     }
 }
