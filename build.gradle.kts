@@ -21,7 +21,8 @@ version = commit
 
 val protoDir: File = sourceSets["main"].proto.srcDirs.first()
 
-val grpcVersion = "1.27.2"
+val grpcVersion = "1.30.2"
+val grpcKotlinVersion = "0.1.4"
 val protoVersion = File("$protoDir/prototool.yaml").useLines { lines ->
     lines.first { it.contains("version:") }.substringAfter(':').trim()
 }
@@ -100,6 +101,9 @@ protobuf {
         id("grpc-java") {
             artifact = "io.grpc:protoc-gen-grpc-java:$grpcVersion"
         }
+        id("grpckt") {
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:$grpcKotlinVersion"
+        }
     }
 
     generateProtoTasks {
@@ -108,6 +112,7 @@ protobuf {
                 id("grpc-java") {
                     outputSubDir = "java"
                 }
+                id("grpckt")
             }
         }
     }
